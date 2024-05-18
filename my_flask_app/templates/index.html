@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Price Prediction</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body class="light-mode">
+    <div class="container my-5">
+        <div class="d-flex justify-content-end mb-3">
+            <div class="custom-control custom-switch">
+                <input type="checkbox" class="custom-control-input" id="themeSwitch">
+                <label class="custom-control-label" for="themeSwitch">Dark Mode</label>
+            </div>
+        </div>
+        <div class="card shadow-lg">
+            <div class="card-header text-white bg-primary">
+                <h2 class="text-center">Mobile Price Prediction</h2>
+            </div>
+            <div class="card-body">
+                <form action="/predict" method="post">
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="battery_power">Battery Power</label>
+                            <input type="number" class="form-control" id="battery_power" name="battery_power" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="blue">Bluetooth</label>
+                            <select class="form-control" id="blue" name="blue" required>
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="clock_speed">Clock Speed (GHz)</label>
+                            <input type="number" step="0.1" class="form-control" id="clock_speed" name="clock_speed" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="dual_sim">Dual SIM</label>
+                            <select class="form-control" id="dual_sim" name="dual_sim" required>
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="fc">Front Camera (MP)</label>
+                            <input type="number" class="form-control" id="fc" name="fc" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="four_g">4G</label>
+                            <select class="form-control" id="four_g" name="four_g" required>
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="int_memory">Internal Memory (GB)</label>
+                            <input type="number" class="form-control" id="int_memory" name="int_memory" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="m_dep">Mobile Depth (cm)</label>
+                            <input type="number" step="0.01" class="form-control" id="m_dep" name="m_dep" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="mobile_wt">Mobile Weight (g)</label>
+                            <input type="number" class="form-control" id="mobile_wt" name="mobile_wt" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="n_cores">Number of Cores</label>
+                            <input type="number" class="form-control" id="n_cores" name="n_cores" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="pc">Primary Camera (MP)</label>
+                            <input type="number" class="form-control" id="pc" name="pc" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="px_height">Pixel Height</label>
+                            <input type="number" class="form-control" id="px_height" name="px_height" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="px_width">Pixel Width</label>
+                            <input type="number" class="form-control" id="px_width" name="px_width" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="ram">RAM (MB)</label>
+                            <input type="number" class="form-control" id="ram" name="ram" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="sc_h">Screen Height (cm)</label>
+                            <input type="number" class="form-control" id="sc_h" name="sc_h" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="sc_w">Screen Width (cm)</label>
+                            <input type="number" class="form-control" id="sc_w" name="sc_w" required>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="talk_time">Talk Time (hours)</label>
+                            <input type="number" class="form-control" id="talk_time" name="talk_time" required>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="three_g">3G</label>
+                            <select class="form-control" id="three_g" name="three_g" required>
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="touch_screen">Touch Screen</label>
+                            <select class="form-control" id="touch_screen" name="touch_screen" required>
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="wifi">WiFi</label>
+                            <select class="form-control" id="wifi" name="wifi" required>
+                                <option value="1">Yes</option>
+                                <option value="0">No</option>
+                            </select>
+                        </div>
+                    </div>
+                    <button type="submit" class="btn btn-primary btn-block">Predict Price</button>
+                </form>
+                {% if prediction_text %}
+                    <div class="alert alert-info text-center mt-4">
+                        <h4>{{ prediction_text }}</h4>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+    <script>
+        const themeSwitch = document.getElementById('themeSwitch');
+        themeSwitch.addEventListener('change', () => {
+            document.body.classList.toggle('dark-mode');
+        });
+    </script>
+</body>
+</html>
